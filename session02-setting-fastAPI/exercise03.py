@@ -25,7 +25,7 @@ def get_student_active():
         if student["status"] == "active":
             student_active.append(student)
     if student_active == [] : 
-        result["message"] == "Khong co hoc sinh theo hoc"
+        result["message"] = "Khong co hoc sinh theo hoc"
     return result
 
 
