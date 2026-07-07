@@ -89,3 +89,4 @@ def get_latest():
             latest_book = book
 
     return latest_book
+

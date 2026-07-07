@@ -47,18 +47,13 @@ books = [
 
 
 @app.get("/books/available")
-def get_books():
-    book_available = []
-    for book in books:
-        if book["is_available"] == True:
-            book_available.append(book)
+def get_books_available():
+    book_available = [book for book in books if book["is_available"] ]
+
     return book_available
 
 @app.get("/books/borrowed")
-def get_books():
-    book_borrowed = []
-    for book in books:
-        if book["is_available"] == False:
-            book_borrowed.append(book)
+def get_books_borrowed():
+    book_borrowed = [book for book in books if not book["is_available"] ]
     return book_borrowed
 
