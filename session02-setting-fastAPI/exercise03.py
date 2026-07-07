@@ -1,3 +1,15 @@
+# Input: Danh sách toàn bộ sinh viên.
+# Output:
+# Nếu có: Danh sách sinh viên đang học.
+# Nếu trống: { "message": "Không có sinh viên đang học", "data": [] }.
+# Điều kiện: status == "active".
+
+# Các bước xử lý:
+# Nhận request: GET /students/active.
+# Truy xuất: Lấy danh sách tổng.
+# Lọc: Giữ lại các sinh viên có status == "active".
+# Trả kết quả: Nếu danh sách lọc có phần tử thì trả về danh sách đó, nếu rỗng thì trả về object JSON báo lỗi mặc định.
+
 from fastapi import FastAPI
 app = FastAPI()
 
