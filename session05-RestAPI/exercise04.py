@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from typing import Optional, Tuple, Dict, Any
+from typing import Optional
 
 app = FastAPI()
 
@@ -15,7 +15,8 @@ class ProductUpdate(BaseModel):
     price: float = Field(..., gt=0)                             
     stock: int = Field(..., ge=0)                               
 
-def validate_and_find_index(product_id: int, new_code: str) -> Tuple[Optional[Dict[str, str]], Optional[int]]:
+# Dùng tuple và dict chữ thường
+def validate_and_find_index(product_id: int, new_code: str) -> tuple[Optional[dict[str, str]], Optional[int]]:
     target_index = None
     
     for i, p in enumerate(products):
