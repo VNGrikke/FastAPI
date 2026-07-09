@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
-from typing import Optional
+from pydantic import BaseModel, Field, EmailStr
 
 app = FastAPI()
 
@@ -13,14 +12,14 @@ students = [
 class StudentCreateRequest(BaseModel):
     code: str = Field(..., min_length=1, description="Mã học viên không được để trống")
     name: str = Field(..., min_length=1, description="Tên không được để trống")
-    email: str = Field(..., min_length=1, description="Email không được để trống")
+    email: EmailStr = Field(..., description="Email không đúng định dạng hoặc không được để trống")
     age: int = Field(..., gt=0, description="Tuổi phải lớn hơn 0")
 
 class StudentUpdateRequest(BaseModel):
-    code: Optional[str] = Field(None, min_length=1)
-    name: Optional[str] = Field(None, min_length=1)
-    email: Optional[str] = Field(None, min_length=1)
-    age: Optional[int] = Field(None, gt=0)
+    code: str | None = Field(None, min_length=1)
+    name: str | None = Field(None, min_length=1)
+    email: EmailStr | None = Field(None)
+    age: int | None = Field(None, gt=0)
 
 
 def check_duplicate_student_code(code: str):
