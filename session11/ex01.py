@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.orm import sessionmaker, Session, declarative_base
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy_utils import database_exists, create_database
-from pydantic import BaseModel, Field
+from pydantic import Field, BaseModel
 from datetime import datetime, timezone
 import urllib.parse
 
